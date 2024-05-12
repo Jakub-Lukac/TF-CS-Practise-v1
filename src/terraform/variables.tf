@@ -9,3 +9,7 @@ variable "environment_name" {
 variable "location" {
   type = string
 }
+
+variable "idk"{
+  type = string
+}
