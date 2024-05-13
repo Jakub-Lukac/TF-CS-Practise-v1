@@ -1,5 +1,5 @@
 resource "azurerm_key_vault" "main" {
-  name                        = "kv-${var.application_name}-${var.environment_name}"
+  name                        = "kv-${var.application_name}-${var.environment_name}${random_string.name.result}"
   location                    = azurerm_resource_group.main.location
   resource_group_name         = azurerm_resource_group.main.name
   enabled_for_disk_encryption = true
