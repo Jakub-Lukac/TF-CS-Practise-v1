@@ -11,6 +11,6 @@ variable "location" {
 }
 
 variable "idk" {
-  
+  type = string
 }
 
