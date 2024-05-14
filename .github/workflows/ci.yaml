@@ -16,25 +16,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - name: Setup .NET Core
         uses: actions/setup-dotnet@v3 
         with:
           dotnet-version: ${{env.DOTNET_VERSION}}
+
       - name: Install dependencies
-        with:
-          dotnet-version: ${{env.DOTNET_VERSION}}
         run: dotnet restore
         working-directory: ${{env.WORKING_DIRECTORY}}
+
       - name: Build
-        with:
-          dotnet-version: ${{env.DOTNET_VERSION}}
         run: dotnet build --configuration Release --no-restore
         working-directory: ${{env.WORKING_DIRECTORY}}
+
       - name: Test
         # --filter Category=Unit
         # only tests with specified category of Unit will be excecuted
         # we will set the Category=Unit int the C# code
-        with:
-          dotnet-version: ${{env.DOTNET_VERSION}}
         run: dotnet test --no-restore --verbosity normal --filter Category=Unit
         working-directory: ./src/dotnet/GitHubDemo.UnitTests
