@@ -12,4 +12,5 @@ resource "random_string" "name" {
   upper   = false
 }
 
+# allows us to access currently logged objectID, tenantID
 data "azurerm_client_config" "current" {}

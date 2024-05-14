@@ -1,3 +1,4 @@
+# analytic service to view performace of app, display log messages and so on
 resource "azurerm_application_insights" "main" {
   name                = "appi-${var.application_name}-${var.environment_name}"
   location            = azurerm_resource_group.main.location
