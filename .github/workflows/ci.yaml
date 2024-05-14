@@ -9,6 +9,7 @@ on:
 
 env:
   DOTNET_VERSION: "6.0.401"
+  WORKING_DIRECTORY: ./src/dotnet/GitHubDemo
 
 jobs:
   build:
@@ -21,4 +22,13 @@ jobs:
           dotnet-version: ${{env.DOTNET_VERSION}}
       - name: Install dependencies
         run: dotnet restore
-        working-directory: ./src/dotnet/GitHubDemo
+        working-directory: ${{env.WORKING_DIRECTORY}}
+      - name: Build
+        run: dotnet build --configuration Release --no-restore
+        working-directory: ${{env.WORKING_DIRECTORY}}
+      - name: Test
+        # --filter Category=Unit
+        # only tests with specified category of Unit will be excecuted
+        # we will set the Category=Unit int the C# code
+        run: dotnet test --no-restore --verbosity normal --filter Category=Unit
+        working-directory: ${{env.WORKING_DIRECTORY}}
