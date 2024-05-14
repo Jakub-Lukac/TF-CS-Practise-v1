@@ -31,4 +31,4 @@ jobs:
         # only tests with specified category of Unit will be excecuted
         # we will set the Category=Unit int the C# code
         run: dotnet test --no-restore --verbosity normal --filter Category=Unit
-        working-directory: ./src/dotnet/GitHubDemo.UnitTests
+        working-directory: ${{env.WORKING_DIRECTORY}}
