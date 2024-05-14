@@ -34,7 +34,10 @@ resource "azurerm_linux_function_app" "foo" {
   storage_account_access_key = azurerm_storage_account.functions.primary_access_key
   service_plan_id            = azurerm_service_plan.main.id
 
+  
   site_config {
+    application_insights_key = azurerm_application_insights.main.instrumentation_key
+    application_insights_connection_string = azurerm_application_insights.main.connection_string
     application_stack {
       # version of our .NET application
       dotnet_version = "6.0"
@@ -53,7 +56,7 @@ resource "azurerm_linux_function_app" "foo" {
     # app should run from deployment package
     "WEBSITE_RUN_FROM_PACKAGE"       = 1
     # allocates key for Azure Application Insights so we can monitor our function app
-    "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.main.instrumentation_key
+    # "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.main.instrumentation_key
   }
 
   # configures managed identity for the function app
