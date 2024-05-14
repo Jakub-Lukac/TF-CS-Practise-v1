@@ -54,13 +54,14 @@ jobs:
         # dotnet publish will allow us to create the artifact that we gonna deployed
         # it gets ready the azure code to be packaged up
         # gonna be published into new directory src/dotnet/GitHubDemo/publish
-        run: dotnet publish ${{env.DOTNET_WORKING_DIRECTORY}}/GitHubDemo.csproj -c Release -o ./publish
+        run: dotnet publish **/GitHubDemo.csproj -c Release -o ./publish
         working-directory: ${{env.DOTNET_WORKING_DIRECTORY}}
 
       - name: Generate Deployment package
         # create a zip file in dotnet working directory - src/dotnet/GitHubDemo
         # ./ - current working directory - src/dotnet/GitHubDemo/publish - set int working-directory
-        run: zip -r ../deployment.zip ./
+        run: | 
+          zip -r ../deployment.zip ./
         working-directory: ${{env.DOTNET_WORKING_DIRECTORY}}/publish
 
       - name: Upload Deployment Package

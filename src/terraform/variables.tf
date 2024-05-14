@@ -11,4 +11,3 @@ variable "location" {
 }
 
 # application_name and environment_name are set it the cd.yaml file as environemt values
-
