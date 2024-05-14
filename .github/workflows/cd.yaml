@@ -54,7 +54,8 @@ jobs:
         # dotnet publish will allow us to create the artifact that we gonna deployed
         # it gets ready the azure code to be packaged up
         # gonna be published into new directory src/dotnet/GitHubDemo/publish
-        run: dotnet publish /home/runner/work/Terraform-Practise-v1/Terraform-Practise-v1/src/dotnet/GitHubDemo/GitHubDemo.csproj -c Release -o ./publish
+        # run: dotnet publish /home/runner/work/Terraform-Practise-v1/Terraform-Practise-v1/src/dotnet/GitHubDemo/GitHubDemo.csproj -c Release -o ./publish
+        run: dotnet publish /**/GitHubDemo.csproj -c Release -o ./publish
         working-directory: ${{env.DOTNET_WORKING_DIRECTORY}}
 
       - name: Generate Deployment package
