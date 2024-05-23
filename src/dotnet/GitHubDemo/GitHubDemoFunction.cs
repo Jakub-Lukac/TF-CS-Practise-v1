@@ -11,7 +11,7 @@ using GitHubDemo.Services.Interfaces;
 
 namespace GitHubDemo
 {
-    public  class GitHubDemoFunction
+    public class GitHubDemoFunction
     {
         private readonly IBulkRequestProcessor _bulkRequestProcessor;
         public GitHubDemoFunction(IBulkRequestProcessor bulkRequestProcessor)
@@ -20,7 +20,7 @@ namespace GitHubDemo
         }
 
         [FunctionName("GitHubDemoFunction")]
-        public  async Task<IActionResult> Run(
+        public async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "foo")] HttpRequest req,
             ILogger log)
         {

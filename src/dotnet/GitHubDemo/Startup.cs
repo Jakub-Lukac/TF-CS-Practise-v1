@@ -1,4 +1,5 @@
 ﻿using GitHubDemo.Services;
+using GitHubDemo.Services.Interfaces;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -23,7 +24,7 @@ namespace GitHubDemo
 
             // register my interface with concrete class (concrete == full implementation of the blueprint)
 
-            builder.Services.AddSingleton<BulkRequestProcessor, BulkRequestProcessor>();
+            builder.Services.AddSingleton<IBulkRequestProcessor, BulkRequestProcessor>();
         }
     }
 }
