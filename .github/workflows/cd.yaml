@@ -10,6 +10,7 @@ on:
     paths:
     ## paths - changes in which files will trigger this file
       - "src/terraform/**"
+      - "src/dotnet/**"
       - ".github/workflow/**"
 
 # setting up environment variables for reuse
