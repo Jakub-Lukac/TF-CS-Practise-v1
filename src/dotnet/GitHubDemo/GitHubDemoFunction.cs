@@ -7,13 +7,20 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using GitHubDemo.Services.Interfaces;
 
 namespace GitHubDemo
 {
-    public static class Function1
+    public  class GitHubDemoFunction
     {
-        [FunctionName("Function1")]
-        public static async Task<IActionResult> Run(
+        private readonly IBulkRequestProcessor _bulkRequestProcessor;
+        public GitHubDemoFunction(IBulkRequestProcessor bulkRequestProcessor)
+        {
+            _bulkRequestProcessor = bulkRequestProcessor;
+        }
+
+        [FunctionName("GitHubDemoFunction")]
+        public  async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "foo")] HttpRequest req,
             ILogger log)
         {
@@ -21,13 +28,17 @@ namespace GitHubDemo
 
             string name = req.Query["name"];
 
+            var myNumber = await _bulkRequestProcessor.DoSomethingAsync();
+
+            log.LogInformation($"My number is : {myNumber}");
+
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
             name = name ?? data?.name;
 
             string responseMessage = string.IsNullOrEmpty(name)
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
-                : $"Hello, {name}. This HTTP triggered function executed successfully.";
+                : $"Hello, {name}. This HTTP triggered function executed successfully. My number is {myNumber}";
 
             return new OkObjectResult(responseMessage);
         }
