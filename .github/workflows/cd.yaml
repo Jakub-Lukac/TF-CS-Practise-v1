@@ -126,10 +126,15 @@ jobs:
 
           resource_group_name=$(terraform output -raw resource_group_name)
           function_name=$(terraform output -raw function_name)
-          
-          echo "::set-output name=resource_group_name::$resource_group_name"
-          echo "::set-output name=function_name::$function_name"
 
+          echo "resource_group_name=${resource_group_name}" >> $GITHUB_OUTPUT
+          echo "function_name=${function_name}" >> $GITHUB_OUTPUT
+          
+        # Deprecated
+        # echo "::set-output name=resource_group_name::$resource_group_name"
+        # echo "::set-output name=function_name::$function_name"
+
+        # Didnt work 
         # terraform output - outputs.tf file!
         # echo "resource_group_name=$resource_group_name" - referencing the terraform value ($) to the github actions value
 
