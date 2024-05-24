@@ -24,6 +24,8 @@ namespace GitHubDemo
 
             // register my interface with concrete class (concrete == full implementation of the blueprint)
 
+            builder.Services.AddLogging();  
+
             builder.Services.AddSingleton<IBulkRequestProcessor, BulkRequestProcessor>();
         }
     }
