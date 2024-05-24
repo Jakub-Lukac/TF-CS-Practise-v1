@@ -14,23 +14,24 @@ namespace GitHubDemo
     public class GitHubDemoFunction
     {
         private readonly IBulkRequestProcessor _bulkRequestProcessor;
-        public GitHubDemoFunction(IBulkRequestProcessor bulkRequestProcessor)
+        private readonly ILogger<GitHubDemoFunction> _logger;
+        public GitHubDemoFunction(IBulkRequestProcessor bulkRequestProcessor, ILogger<GitHubDemoFunction> logger)
         {
             _bulkRequestProcessor = bulkRequestProcessor;
+            _logger = logger;
         }
 
         [FunctionName("GitHubDemoFunction")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "foo")] HttpRequest req,
-            ILogger log)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "foo")] HttpRequest req)
         {
-            log.LogInformation("C# HTTP trigger function processed a request.");
+            _logger.LogInformation("C# HTTP trigger function processed a request.");
 
             string name = req.Query["name"];
 
             var myNumber = await _bulkRequestProcessor.DoSomethingAsync();
 
-            log.LogInformation($"My number is : {myNumber}");
+            _logger.LogInformation($"My number is : {myNumber}");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
