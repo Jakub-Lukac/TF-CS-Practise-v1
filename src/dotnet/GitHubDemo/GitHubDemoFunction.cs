@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using GitHubDemo.Services.Interfaces;
 using Microsoft.ApplicationInsights;
 using Microsoft.ApplicationInsights.Extensibility;
+using System.Collections.Generic;
 
 namespace GitHubDemo
 {
@@ -39,7 +40,11 @@ namespace GitHubDemo
 
             _logger.LogInformation($"My number is : {myNumber}");
 
-            _telementryClient.TrackEvent("Azure Function Event");
+            var eventAttributes = new Dictionary<string, string>();
+            eventAttributes.Add("Foo", "5");
+            eventAttributes.Add("Bar", "41");
+
+            _telementryClient.TrackEvent("Azure Function Event", eventAttributes);
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
