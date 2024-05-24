@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using GitHubDemo.Services.Interfaces;
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace GitHubDemo
 {
@@ -15,10 +17,14 @@ namespace GitHubDemo
     {
         private readonly IBulkRequestProcessor _bulkRequestProcessor;
         private readonly ILogger<GitHubDemoFunction> _logger;
-        public GitHubDemoFunction(IBulkRequestProcessor bulkRequestProcessor, ILogger<GitHubDemoFunction> logger)
+        private readonly TelemetryClient _telementryClient;
+        public GitHubDemoFunction(IBulkRequestProcessor bulkRequestProcessor, ILogger<GitHubDemoFunction> logger, TelemetryConfiguration telemetryConfiguration)
         {
             _bulkRequestProcessor = bulkRequestProcessor;
             _logger = logger;
+            // we set in the terraform code the application insights for the azure function,
+            // thanks to which connection is automatically made (application_insights_key)
+            _telementryClient = new TelemetryClient(telemetryConfiguration);
         }
 
         [FunctionName("GitHubDemoFunction")]
@@ -32,6 +38,8 @@ namespace GitHubDemo
             var myNumber = await _bulkRequestProcessor.DoSomethingAsync();
 
             _logger.LogInformation($"My number is : {myNumber}");
+
+            _telementryClient.TrackEvent("Azure Function Event");
 
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             dynamic data = JsonConvert.DeserializeObject(requestBody);
