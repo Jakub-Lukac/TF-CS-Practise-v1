@@ -34,9 +34,9 @@ resource "azurerm_linux_function_app" "foo" {
   storage_account_access_key = azurerm_storage_account.functions.primary_access_key
   service_plan_id            = azurerm_service_plan.main.id
 
-  
+
   site_config {
-    application_insights_key = azurerm_application_insights.main.instrumentation_key
+    application_insights_key               = azurerm_application_insights.main.instrumentation_key
     application_insights_connection_string = azurerm_application_insights.main.connection_string
     application_stack {
       # version of our .NET application
@@ -45,7 +45,7 @@ resource "azurerm_linux_function_app" "foo" {
     # cross-origin resource sharing
     cors {
       # specifies which origins are allowed to acces the function app
-      allowed_origins     = ["https://portal.azure.com"]
+      allowed_origins = ["https://portal.azure.com"]
       # states whether credentials(cookies) are supported
       support_credentials = true
     }
@@ -54,7 +54,7 @@ resource "azurerm_linux_function_app" "foo" {
   # app_settings are key value pairs
   app_settings = {
     # app should run from deployment package
-    "WEBSITE_RUN_FROM_PACKAGE"       = 1
+    "WEBSITE_RUN_FROM_PACKAGE" = 1
     # allocates key for Azure Application Insights so we can monitor our function app
     # "APPINSIGHTS_INSTRUMENTATIONKEY" = azurerm_application_insights.main.instrumentation_key
   }
@@ -62,7 +62,7 @@ resource "azurerm_linux_function_app" "foo" {
   # configures managed identity for the function app
   identity {
     # sets both types
-    type         = "SystemAssigned, UserAssigned"
+    type = "SystemAssigned, UserAssigned"
     # specifies IDs of the user-assigned identities that will be associated with the function app
     identity_ids = [azurerm_user_assigned_identity.functions.id]
   }

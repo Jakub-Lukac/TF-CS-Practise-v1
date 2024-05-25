@@ -1,0 +1,13 @@
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\bin\Debug\net6.0\GitHubDemo.Services.deps.json
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\bin\Debug\net6.0\GitHubDemo.Services.dll
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\bin\Debug\net6.0\GitHubDemo.Services.pdb
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.csproj.AssemblyReference.cache
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.AssemblyInfoInputs.cache
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.AssemblyInfo.cs
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.csproj.CoreCompileInputs.cache
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.sourcelink.json
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.dll
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\refint\GitHubDemo.Services.dll
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\GitHubDemo.Services.pdb
+C:\Users\Jakub\MyDocuments\GitHubDesktopProjects\Terraform-Practise-v1\src\dotnet\GitHubDemo.Services\obj\Debug\net6.0\ref\GitHubDemo.Services.dll
