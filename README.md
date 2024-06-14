@@ -109,6 +109,49 @@ BACKEND_STORAGE_ACCOUNT_NAME
 BACKEND_STORAGE_CONTAINER_NAME
 TF_BACKEND_KEY</br>
 ```
+# Azure Function Setup
+
+## Creating Azure Function
+In Visual Studio create Azure Function with HTTP Trigger for starters. Select the .NET 6.0 template. In this project, we will stick to .NET 6 version.
+
+## Startup.cs file
+When running a .NET 6 version of Azure Function, we have to manually create the Startup.cs file. To add logging and dependency injection populate your Startup.cs file with the following code snippet.
+
+```text
+using GitHubDemo.Services;
+using GitHubDemo.Services.Interfaces;
+using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+//This startup class would be a startup of our function
+[assembly: FunctionsStartup(typeof(GitHubDemo.Startup))]
+
+namespace GitHubDemo
+{
+    // class for setting up the dependency injection
+    // generally the cycle starts here
+    // configure dependency injection container with our services and functions
+    internal class Startup : FunctionsStartup
+    {
+        public override void Configure(IFunctionsHostBuilder builder) // == container
+        {
+            // place for configuring the dependency injection container
+
+            // register my interface with concrete class (concrete == full implementation of the blueprint)
+
+            builder.Services.AddLogging();  
+
+            builder.Services.AddSingleton<IBulkRequestProcessor, BulkRequestProcessor>();
+        }
+    }
+}
+
+```
 
 # PostMan
 
