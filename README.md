@@ -91,18 +91,18 @@ Navigate to your repository, go to Settings -> Secrets and Variables -> Actions.
 
 ### Secrets
 In here create secrets **ARM_CLIENT_SECRET** and **BACKEND_ACCESS_KEY**</br>
-ARM_CLIENT_SECRET is represented in var.tf file by the env_client_secret variable.]
+ARM_CLIENT_SECRET is represented in variables.tf file by the env_client_secret variable.]
 
 ### Variables
 
-**Important to note**, like client secret, app ID, tenant ID, subscription ID, **MUST** start with phrase **ARM**
+**Important to note**, like client secret, app ID, tenant ID, subscription ID, **MUST** start with phrase **ARM.**
 ```text
 ARM_CLIENT_ID
 ARM_SUBSCRIPTION_ID
 ARM_TENANT_ID
 ```
 
-**Populate the values from the backend.conf file**
+**Populate the values from the backend.conf file.**
 ```text
 BACKEND_RESOURCE_GROUP_NAME
 BACKEND_STORAGE_ACCOUNT_NAME
