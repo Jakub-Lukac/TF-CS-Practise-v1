@@ -55,6 +55,35 @@ Microsoft Graph
 
 After adding permissions use the **Grant admin consent** button to commit permissions.
 
+## Run Terraform
+
+Prepare backend.conf file with the following attributes for storing your terraform.tfstate
+
+```terraform
+resource_group_name  = "Your-RG-Name"
+storage_account_name = "yourstorageaccount"
+container_name       = "your-container-name"
+key                  = "terraform.tfstate"
+access_key           = "your-access-key"
+```
+
+**Later on this file won't be needed, and will be deleted/ignored**</br>
+**Its purpose is only for the initial run.**
+
+When you're ready, run the following commands:
+
+```text
+terraform init -backend-config=backend.conf
+terraform validate
+terraform plan -out="plan_main.out" 
+```
+
+If there is no error reported, run the `apply` command to deploy the solution for the customer.
+
+```text
+terraform apply "plan_main.out"
+```
+
 # PostMan
 
 by targeting this endpoint https://{NAME_OF_THE_FUNCTION_APP_FROM_AZURE_PORTAL}/api/foo
