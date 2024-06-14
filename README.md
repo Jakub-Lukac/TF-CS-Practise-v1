@@ -189,3 +189,9 @@ By targeting the following GET endpoint, we get a message: "Hello, Jakub. This H
  https://{NAME_OF_THE_FUNCTION_APP_FROM_AZURE_PORTAL}.azurewebsites.net/api/foo?name=Jakub
 ```
 
+## NuGet Packages
+```text
+Microsoft.NET.Sdk.Functions
+Microsoft.Extensions.DependencyInjection
+Microsoft.Logging.Abstractions
+```
