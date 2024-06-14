@@ -175,12 +175,17 @@ namespace GitHubDemo.UnitTests
 }
 ```
 
-# PostMan
+## PostMan
+We will use PostMan to test our Azure function.
 
-by targeting this endpoint https://{NAME_OF_THE_FUNCTION_APP_FROM_AZURE_PORTAL}/api/foo
-we get a message :
-This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.
+By targeting the following GET endpoint we get a message: "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
+```text
+https://{NAME_OF_THE_FUNCTION_APP_FROM_AZURE_PORTAL}.azurewebsites.net/api/foo
+```
+The "foo" endpoint is specified in our HTTP trigger Azure function.
 
-by targeting this endpoint https://{NAME_OF_THE_FUNCTION_APP_FROM_AZURE_PORTAL}/api/foo?name=Jakub
-we get a message :
-Hello, Jakub. This HTTP triggered function executed successfully.
+By targeting the following GET endpoint, we get a message: "Hello, Jakub. This HTTP triggered function executed successfully." 
+```text
+ https://{NAME_OF_THE_FUNCTION_APP_FROM_AZURE_PORTAL}.azurewebsites.net/api/foo?name=Jakub
+```
+
