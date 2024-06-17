@@ -8,7 +8,6 @@ namespace GitHubDemo.UnitTests
         [Fact]
         public void Test1()
         {
-            // maybe
             int a = 2;
             int b = 3;
             int sum = a + b;
